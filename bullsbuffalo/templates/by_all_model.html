@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<body style="    background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
+
+    <div class="m-5 justify-content-center" >
+        <h1><b><center>Results for the Stock :  {{ tickerstock }}</center></b></h1>
+        <h2><b><center>Selected Models are : {{model_type}}</center></b></h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <h3><b><center>Best Model for selected stock : {{best_model}}</center></b></h4>
+        </div>
+        <div class="col-lg-6">
+            <h4><b><center>RMSE for Selected Model : {{min_rmse}}</center></b></h4>
+        </div>
+        <div class="col-lg-6">
+            <h4><b><center>SMAPE for Selected Model : {{min_smape}}</center></b></h4>
+        </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <div class="flex-child magenta">
+            <div id='arima_chart' class='arima_chart'></div>
+        </div>
+        
+        <div class="flex-child green">
+            <div id='lr_chart' class='lr_chart'></div>
+        </div>
+        
+      </div>
+
+      <div class="flex-container">
+
+        <div class="flex-child magenta">
+            <div id='LSTM_chart' class='LSTM_chart'></div>
+        </div>
+        
+        <div class="flex-child green">
+            <div id='RF_chart' class='RF_chart'></div>
+        </div>
+        
+      </div>
+
+</body>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+
+
+  var graphs1 = {{graph_arima | safe}};
+  Plotly.plot('arima_chart',graphs1,{margin:{height:500,width:500}});
+
+  var graphs2 = {{graph_Linear | safe}};
+  Plotly.plot('lr_chart',graphs2,{});
+
+  var graphs3 = {{graph_LSTM | safe}};
+  Plotly.plot('LSTM_chart',graphs3,{});
+
+  var graphs4 = {{graph_RF | safe}};
+  Plotly.plot('RF_chart',graphs4,{});
+
+</script>
+
+<style>
+    .plot-container .plotly .js-plotly-plot .plotly{
+        width: 500;
+    }
+    .flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    /* border: 2px solid yellow; */
+}  
+
+.flex-child:first-child {
+    margin-right: 0px;
+} 
+    
+</style>
+
+</html>

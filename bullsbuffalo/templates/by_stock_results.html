@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<body style="background-color: #8BC6EC;background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
+
+    <div class="m-5 justify-content-center" >
+        <h1><b><center>Results for the Stock :  {{ tickerstock }}</center></b></h1>
+        <h2><b><center>Selected Models are : {{model_type}}</center></b></h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <h4><b><center>RMSE for Selected Model : {{rmse}}</center></b></h4>
+        </div>
+        <div class="col-lg-6">
+            <h4><b><center>SMAPE for Selected Model : {{mape}}</center></b></h4>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div>
+          <div id='arima_chart' class='arima_chart'></div>
+        </div>
+      </div>
+
+</body>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+
+  var graphs1 = {{graphJSON1 | safe}};
+  Plotly.plot('arima_chart',graphs1,{});
+
+</script>
+
+</html>

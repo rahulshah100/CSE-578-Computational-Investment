@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<body class="background">
+  <h1>Results for {{ tickerstock }} </h1><br>
+  <div class="row">
+    <div class="column" style="margin-top: 5%;margin-left: 5%;">
+      <h2 class="res">R1 : {{ R1 }} </h2>  <h2 class="sup">S1 : {{ S1 }} </h2>
+      <h2 class="res">R2 : {{ R2 }} </h2>  <h2 class="sup">S2 : {{ S2 }} </h2>
+      <h2 class="res"> R3 : {{ R3 }}</h2>  <h2 class="sup"> S3 : {{ S3 }}</h2>
+     
+      
+      
+      <h2>Buy Signal : {{ buy_signal }}</h2>
+      <h2>Sell Signal : {{ sell_signal }}</h2>
+
+      <h2>Hedge Percentage : {{ hedge_ratio }}</h2>
+      <h4>Note1 : Invest {{ risk }} in forward direction</h4>
+      <h4>Note2 : Invest {{ nonrisk }} in opposite direction</h4>
+    </div>
+    <div class="column" style="margin-right: 30px">
+      <img id="picture" src="data:image/jpeg;base64,{{ img_data }}">
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div>
+      <div id='chart' class='chart'></div>
+
+    </div>
+  </div>
+
+</body>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{ graphJSON | safe}};
+  Plotly.plot('chart', graphs, {});
+
+  // var graphs1 = {{graphJSON1 | safe}};
+  // Plotly.plot('chart1',graphs1,{});
+
+</script>
+
+</html>
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  .background {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(74, 74, 187, 1) 0%, rgba(0, 212, 255, 1) 100%);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 40%;
+    padding: 10px;
+    /* Should be removed. Only for demonstration */
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .res {
+    color: red;
+  }
+
+  .sup {
+    color: green;
+  }
+</style>

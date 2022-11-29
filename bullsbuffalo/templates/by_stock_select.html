@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body style="background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
+        <div class="m-5 justify-content-center" >
+            <h1><b><center>CSE 578: Computational Investment 2022</center></b></h1>
+            <h2><center>Team Name : Bulls of Buffalo</center></h2>
+            <h2><center>Market Data Prediction using diverse ML/DL Models</center></h2>
+        </div>
+
+        <div class="container">
+            <form action="{{ url_for('by_stock_results') }}" method="post">
+            <div class="row">
+                <div class="col-lg-4 form-group">
+                        <label for="sel1">Stock</label>
+                        <select class="form-control" id="sel1" name="sel1">
+                          <option>Choose a Stock</option>
+                        </select>
+                </div>
+                <div class="col-lg-4 form-group">
+                    <label for="formGroupExampleInput">Prediction Range</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"  name="time_range" value="20">
+                  </div>
+                  <div class="col-lg-4 form-group">
+                    <label for="model1">Select Model</label>
+                    <select class="form-control" id="model1" name="model1">
+                        <option>Choose a Model</option>
+                      </select>
+                  </div>
+              </div>
+            <br>
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+
+            </form>
+        </div>
+    </body>
+    </html>
+
+    <script>
+
+var select = document.getElementById("sel1");
+var options = ["BMY",
+"DIS",
+"COP",
+"LIN",
+"NEE",
+"VZ",
+"TXN",
+"AMGN",
+"CRM",
+"ADBE",
+"HON",
+"PM",
+"RTX",
+"CMCSA",
+"QCOM",
+"AAPL",
+"MSFT",
+"AMZN",
+"GOOGL",
+"BRK.B",
+"UNH",
+"TSLA",
+"GOOG",
+"XOM",
+"JNJ",
+"JPM",
+"NVDA",
+"PG",
+"V",
+"CVX",
+"HD",
+"LLY",
+"MA",
+"BAC",
+"PFE",
+"ABBV",
+"MRK",
+"META",
+"PEP",
+"KO",
+"COST",
+"AVGO",
+"TMO",
+"MCD",
+"WMT",
+"CSCO",
+"ABT",
+"WFC",
+"ACN"];
+
+for(var i = 0; i < options.length; i++) {
+    var opt = options[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+}
+
+var select1 = document.getElementById("model1");
+var options1 = ["ARIMA","LSTM","LinearRegression","ALL"]
+
+for(var i = 0; i < options1.length; i++) {
+    var opt1 = options1[i];
+    var el1 = document.createElement("option");
+    el1.textContent = opt1;
+    el1.value = opt1;
+    select1.appendChild(el1);
+}
+
+    </script>
+    
+    <style>
+        .background{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(74,74,187,1) 0%, rgba(0,212,255,1) 100%);
+        }
+    </style>
